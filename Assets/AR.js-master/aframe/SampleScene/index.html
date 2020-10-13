@@ -98,6 +98,9 @@ if (markerFound == 1) {
 
 <!-- BEGIN: Unity Compiled Assets -->
 <a-assets>
+<a-asset-item id="Model_Asset_obj_0" src="models/teaPot.obj"></a-asset-item>
+<a-asset-item id="Model_Asset_mtl_0" src="models/teaPot.mtl"></a-asset-item>
+
 </a-assets>
 <!-- END: Unity Compiled Assets -->
 <!-- BEGIN: Add Image Target (marker) -->
@@ -105,8 +108,8 @@ if (markerFound == 1) {
 <!-- END: Add Image Target (marker) -->
 
 <!-- BEGIN: Unity Compiled Objects -->
-<a-sphere radius="0.25" class="intersectable" position="0 0.3 0" rotation="0 0 0" color="#FFFFFF" 
-></a-sphere>
+<a-entity obj-model="obj: #Model_Asset_obj_0; mtl: #Model_Asset_mtl_0" scale="1.5 1.5 1.5" class="intersectable" position="-0.033859 -0.032 0.096192" rotation="0 0 0" color="#969696" 
+></a-entity>
 <!-- END: Unity Compiled Objects -->
 
 <!-- BEGIN: Bottom HTML -->
