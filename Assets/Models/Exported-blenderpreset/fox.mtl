@@ -1,7 +1,7 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# File Created: 14.10.2020 20:20:28
+# File Created: 14.10.2020 20:41:01
 
-newmtl low_poly_fox_by_pixelmannen_fox_material
+newmtl fox_material
 	Ns 96.078423
 	Ni 1.500000
 	d 1.000000
