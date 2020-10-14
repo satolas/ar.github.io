@@ -1,7 +1,7 @@
-# Blender v2.80 (sub 75) OBJ File: ''
+# Blender v2.80 (sub 75) OBJ File: '479.blend'
 # www.blender.org
 mtllib 449_whitewalls.mtl
-o BUILDING006
+o BUILDING006_BUILDING006.001
 v 55.180099 0.000003 -19.155001
 v 60.200100 0.000003 -19.155001
 v 60.200100 0.000003 -18.955000
@@ -2711,7 +2711,7 @@ vn 0.0000 0.4999 -0.8661
 vn 0.0000 0.5001 -0.8660
 vn -1.0000 0.0001 -0.0000
 vn 1.0000 -0.0001 -0.0000
-usemtl Material__26
+usemtl Material__26.001
 s off
 f 1/1/1 2/2/1 3/3/1
 f 1/1/1 3/3/1 4/4/1

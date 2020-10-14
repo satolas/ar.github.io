@@ -1,1 +1,0 @@
-{"frameList":[{"time":0.0,"posX":0.0,"posY":1.5,"posZ":0.0,"rotX":0.0,"rotY":0.0,"rotZ":0.0,"scalX":1.0,"scalY":1.0,"scalZ":1.0,"transform":{"instanceID":0}},{"time":5.0,"posX":0.0,"posY":9.399999618530274,"posZ":0.0,"rotX":0.0,"rotY":0.0,"rotZ":0.0,"scalX":1.0,"scalY":1.0,"scalZ":1.0,"transform":{"instanceID":0}}]}
