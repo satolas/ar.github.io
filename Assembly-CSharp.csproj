@@ -56,6 +56,7 @@
      <None Include="Assets\Animations\JsonExports\SampleScene\Model_1.txt" />
      <None Include="Assets\Animations\JsonExports\SampleScene\Model_2.txt" />
      <None Include="Assets\AR.js-master\three.js\vendor\jsartoolkit5\LICENSE.txt" />
+     <None Include="Assets\Animations\JsonExports\SampleScene\Model_0.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
