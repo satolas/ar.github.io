@@ -29,18 +29,7 @@ AFRAME.registerComponent('markercontroller', {
         let rotation = new THREE.Quaternion();
         let scale = new THREE.Vector3();
 
-        // Original transform
-        const baseMatrix = createUnityMatrix(this.el.object3D);
-
-        // Apply one fixed rotation offset
-        // Example: 180° around Y (flip model)
-        const rotationOffset = new THREE.Matrix4().makeRotationZ(Math.PI / 2);
-
-        // Combine base + offset
-        const finalMatrix = baseMatrix.multiply(rotationOffset);
-
-        // Decompose into position / rotation / scale
-        finalMatrix.decompose(position, rotation, scale);
+        createUnityMatrix(this.el.object3D).decompose(position, rotation, scale);
 
         const serializedInfos = `${this.data.name},${this.el.object3D.visible},${position.toArray()},${rotation.toArray()},${scale.toArray()}`;
 
@@ -98,5 +87,3 @@ AFRAME.registerComponent('copycanvas', {
         unityCanvas.height = this.el.canvas.height
     } 
 });
-
-
