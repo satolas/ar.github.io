@@ -80,28 +80,53 @@ AFRAME.registerComponent('cameratransform', {
     } 
 });
 
-AFRAME.registerComponent('copycanvas', {
-  tick: function(time, timeDelta){
-    const unityCanvas = document.getElementsByTagName('canvas')[0];
-    unityCanvas.width = this.el.canvas.width;
-    unityCanvas.height = this.el.canvas.height;
-  }
-}); // ✅ properly close the component here
+AFRAME.registerComponent('markercontroller', {
+    schema: {
+        name : {type: 'string'}
+    },
+    tock: function(time, timeDelta){
 
-// -----------------------------------------------
-// 🧭 Per-marker rotation tweak (executed on startup)
-// -----------------------------------------------
-window.addEventListener('load', () => {
-  // Wait a moment to ensure A-Frame scene and markers are initialized
-  setTimeout(() => {
-    // Example: rotate the Nutty marker’s object by 90° around Y
-    const nuttyMarker = document.querySelector('a-marker[markercontroller][markercontroller*="Nutty"]');
-    if (nuttyMarker) {
-      // Rotation values are in radians
-      nuttyMarker.object3D.rotation.y = Math.PI / 2; // 90 degrees
-      console.log('✅ Rotated Nutty marker 90° around Y axis');
-    } else {
-      console.warn('⚠️ Nutty marker not found');
-    }
-  }, 1000); // wait 1s after load to ensure scene is ready
+        let position = new THREE.Vector3();
+        let rotation = new THREE.Quaternion();
+        let scale = new THREE.Vector3();
+
+        // -----------------------------
+        // Per-marker rotation offset
+        // -----------------------------
+        // Define offsets here (Euler angles in radians)
+        let offsetRotation = new THREE.Euler(0, 0, 0); // default no rotation
+
+        if(this.data.name === "Nutty"){
+            offsetRotation = new THREE.Euler(0, Math.PI/2, 0); // 90° Y rotation
+        } 
+        else if(this.data.name === "Hiro"){
+            offsetRotation = new THREE.Euler(0, Math.PI, 0); // example: 180° for Hiro
+        }
+
+        // create the matrix including the offset
+        const matrix = createUnityMatrix(this.el.object3D, offsetRotation);
+
+        matrix.decompose(position, rotation, scale);
+
+        const serializedInfos = `${this.data.name},${this.el.object3D.visible},${position.toArray()},${rotation.toArray()},${scale.toArray()}`;
+
+        if(isDetectionManagerReady){
+          unityInstance.SendMessage("DetectionManager", "markerInfos", serializedInfos);
+        }
+    } 
 });
+
+// -----------------------------
+// Modified createUnityMatrix to accept offsetRotation
+// -----------------------------
+function createUnityMatrix(el, offsetRotation = new THREE.Euler(0,0,0)){
+    const m = el.matrix.clone();
+
+    // apply offset rotation locally
+    const offsetMat = new THREE.Matrix4().makeRotationFromEuler(offsetRotation);
+    m.multiply(offsetMat);
+
+    const zFlipped = new THREE.Matrix4().makeScale(1, 1, -1).multiply(m);
+    const rotated = zFlipped.multiply(new THREE.Matrix4().makeRotationX(-Math.PI/2));
+    return rotated;
+}
