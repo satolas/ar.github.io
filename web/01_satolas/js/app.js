@@ -34,7 +34,7 @@ AFRAME.registerComponent('markercontroller', {
 
         // Apply one fixed rotation offset
         // Example: 180° around Y (flip model)
-        const rotationOffset = new THREE.Matrix4().makeRotationY(Math.PI);
+        const rotationOffset = new THREE.Matrix4().makeRotationZ(Math.PI / 2);
 
         // Combine base + offset
         const finalMatrix = baseMatrix.multiply(rotationOffset);
@@ -98,4 +98,5 @@ AFRAME.registerComponent('copycanvas', {
         unityCanvas.height = this.el.canvas.height
     } 
 });
+
 
