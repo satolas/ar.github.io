@@ -86,4 +86,21 @@ AFRAME.registerComponent('copycanvas', {
         unityCanvas.width = this.el.canvas.width
         unityCanvas.height = this.el.canvas.height
     } 
+
+// -----------------------------------------------
+// 🧭 Per-marker rotation tweak (executed on startup)
+// -----------------------------------------------
+window.addEventListener('load', () => {
+  // Wait a moment to ensure A-Frame scene and markers are initialized
+  setTimeout(() => {
+    // Example: rotate the Nutty marker’s object by 90° around Y
+    const nuttyMarker = document.querySelector('a-marker[markercontroller][markercontroller*="Nutty"]');
+    if (nuttyMarker) {
+      // Rotation values are in radians
+      nuttyMarker.object3D.rotation.y = Math.PI / 2; // 90 degrees
+      console.log('✅ Rotated Nutty marker 90° around Y axis');
+    } else {
+      console.warn('⚠️ Nutty marker not found');
+    }
+  }, 1000); // wait 1s after load to ensure scene is ready
 });
