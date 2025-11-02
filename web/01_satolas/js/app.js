@@ -81,11 +81,12 @@ AFRAME.registerComponent('cameratransform', {
 });
 
 AFRAME.registerComponent('copycanvas', {
-    tick: function(time, timeDelta){
-        const unityCanvas = document.getElementsByTagName('canvas')[0];
-        unityCanvas.width = this.el.canvas.width
-        unityCanvas.height = this.el.canvas.height
-    } 
+  tick: function(time, timeDelta){
+    const unityCanvas = document.getElementsByTagName('canvas')[0];
+    unityCanvas.width = this.el.canvas.width;
+    unityCanvas.height = this.el.canvas.height;
+  }
+}); // ✅ properly close the component here
 
 // -----------------------------------------------
 // 🧭 Per-marker rotation tweak (executed on startup)
